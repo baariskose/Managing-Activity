@@ -1,0 +1,80 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Dialog title="Title">
+		<beginButton>
+			<Button text="OK" type="Emphasized" press="handleDialogOkButton"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="handleDialogCancelButton"/>
+		</endButton>
+		<l:VerticalLayout class="sapUiContentPadding" width="100%">
+			<l:content>
+				<f:SimpleForm id="appointmentCreateForm" editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="false">
+					<f:content>
+						<VBox>
+							<Label text="Projects" labelFor="projectInput" />
+
+							<Input id="searchCompanyProject" placeholder="search a project / company" showSuggestion="true" suggestionItems="{customers>/Customers}" suggestionItemSelected=".onInputTaskChanged">
+								<suggestionItems >
+									<core:ListItem text="{customers>CompanyName}" additionalText="{customers>ProjectName}">
+
+									</core:ListItem>
+								</suggestionItems>
+							</Input>
+							<Label text="Company Name" labelFor="idCompanyName"/>
+							<Input editable="false" id="idCompanyName" placeholder="" value="{currTaskInfo>/selectedCompany}"/>
+							<Label text="Project Name" labelFor="appTitle" />
+							<Input editable="false" id="appTitle" placeholder="" maxLength="255" value="{currTaskInfo>/selectedProject}"/>
+							<Label text="Additional information" labelFor="inputInfo"/>
+							<Input id="moreInfo" maxLength="255"/>
+							<Label text="Start Date" labelFor="DPStartDate"/>
+							<DateTimePicker id="DTPStartDate" required="true" visible="false" />
+							<DatePicker id="DPStartDate" required="true" visible="true" />
+							<Label text="Start Time" labelFor="TPStartTime"/>
+							<TimePicker id="TPStartTime" required="true" change="handleDatePickerChange" />
+							<Label text="End Time" labelFor="endDate"/>
+							<DatePicker id="DPEndDate" required="true" visible="false" change="handleDatePickerChange"/>
+							<TimePicker id="TPEndTime" required="true" change="handleDatePickerChange" />
+							<CheckBox visible="false" id="allDay" text="All-day" selected="{allDay>/allDay}" select="handleCheckBoxSelect"/>
+						</VBox>
+						<VBox>
+							<HBox class="sapUiSmallMarginTop" alignContent="SpaceBetween" justifyContent="SpaceAround">
+								<Label text="Şehir Dışı" labelFor="isOutCity"/>
+								<Label text="Yemek Kartı" labelFor="yemekSwitch"/>
+								<Label text="Faturalansın" labelFor="faturaSwitch"/>
+							</HBox>
+							<HBox alignContent="SpaceBetween" justifyContent="SpaceAround">
+								<Switch id="isOutCity" customTextOff=" " customTextOn=" " change=".onIsOutCityChange">
+								</Switch>
+								<Switch id="yemekSwitch" customTextOff=" " customTextOn=" ">
+								</Switch>
+								<Switch id="faturaSwitch" customTextOff=" " customTextOn=" ">
+								</Switch>
+							</HBox>
+							<VBox class="sapUiMediumMarginTop" alignContent="SpaceBetween" justifyContent="SpaceAround">
+								<HBox alignContent="SpaceBetween" justifyContent="SpaceAround">
+									<Label visible="{currSwitchInfo>/isOutCity}" text="Yemek Masrafı" labelFor="isOutCityFoodPrice"/>
+									<Label visible="{currSwitchInfo>/isOutCity}" text="Yol Masrafı" labelFor="isOutCityTransportPrice"/>
+									<Label textAlign="Center" text="Efor Saati" labelFor="idEfor"/>
+								</HBox>
+								<HBox alignContent="SpaceBetween" justifyContent="SpaceAround">
+									<Input visible="{currSwitchInfo>/isOutCity}" id="isOutCityFoodPrice" placeholder="Yemek masrafı" />
+									<Input visible="{currSwitchInfo>/isOutCity}" id="isOutCityTransportPrice" placeholder="Yol masrafı" />
+									<Label textAlign="Center" id="idEfor" text="{eforInfo>/eforTime}" />
+								</HBox>
+
+
+							</VBox>
+						</VBox>
+						<Label text="Type" labelFor="appType"/>
+						<Select id="appType" items="{/supportedAppointmentItems}">
+							<core:Item key="{type}" text="{text}" />
+						</Select>
+					</f:content>
+				</f:SimpleForm>
+			</l:content>
+		</l:VerticalLayout>
+	</Dialog>
+</core:FragmentDefinition>

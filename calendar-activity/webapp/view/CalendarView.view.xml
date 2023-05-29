@@ -1,0 +1,59 @@
+<mvc:View controllerName="com.smod.calendaractivity.controller.CalendarView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified"
+    xmlns:smod="com.smod.calendaractivity.ui"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content >
+        <Panel class="timePanel" height="auto" width="100%" visible="{timerTextInfo>/timerVisible}">
+            <content>
+                   <l:Grid id="timerGrid">
+                <smod:Timer id="timer1" title="Some title" getTimeValues=".getTimerValues"/>
+
+            </l:Grid>
+            </content>
+        </Panel>
+          
+            <VBox class="sapUiSmallMargin">
+                <SinglePlanningCalendar 
+                id="SPC1" 
+                class="sapUiSmallMarginTop" 
+                title= "My Calendar" 
+                viewChange="handleViewChange" 
+                appointmentSelect="handleAppointmentSelect" 
+                headerDateSelect="handleHeaderDateSelect" 
+                startDateChange="handleStartDateChange" 
+                appointmentDrop="handleAppointmentDrop" 
+                appointmentResize="handleAppointmentResize" 
+                appointmentCreate="handleAppointmentCreateDnD" 
+                moreLinkPress="handleMoreLinkPress" 
+                startDate="{path: '/startDate'}" 
+                fullDay= "false" 
+                startHour= "8" 
+                enableAppointmentsDragAndDrop="true" 
+                enableAppointmentsResize="true" 
+                enableAppointmentsCreate="true" 
+                appointments="{path: '/appointments'}">
+                    <actions>
+                        <Button id="timerShowButton" icon="sap-icon://away" press="handleShowTimePanel" tooltip="Open SinglePlanningCalendar legend" /> 
+                        <Button id="addNewAppointment" icon="sap-icon://add" press="handleAppointmentCreate" tooltip="Add new appointment" />
+                        <Button id="legendButton" icon="sap-icon://legend" press="handleOpenLegend" tooltip="Open SinglePlanningCalendar legend" />
+                    </actions>
+                    <views>
+                        <SinglePlanningCalendarWeekView key="WeekView" title="Week" />
+                        <SinglePlanningCalendarWorkWeekView key="WorkWeekView" title="Work Week" />
+                        <SinglePlanningCalendarDayView key="DayView" title="Day" />
+                        <SinglePlanningCalendarMonthView key="MonthView" title="Month" />
+                    </views>
+                    <appointments>
+                        <unified:CalendarAppointment  title= "{title}" text= "{text}" type= "{type}" icon= "{icon}" startDate= "{startDate}" endDate= "{endDate}" description="{description}" >
+                        </unified:CalendarAppointment>
+                    </appointments>
+                </SinglePlanningCalendar>
+            </VBox>
+        </content>
+    </Page>
+
+</mvc:View>

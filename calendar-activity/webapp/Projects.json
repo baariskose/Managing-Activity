@@ -1,0 +1,52 @@
+{
+    "Projects": [
+      {
+        "CompanyID": 1,
+        "ProjectID": 1,
+        "CompanyName": "Carrefour-SA",
+        "ProjectName": "Puantaj Hesaplama"
+      },
+      {
+        "CompanyID": 1,
+        "ProjectID": 2,
+        "CompanyName": "Carrefour-SA",
+        "ProjectName": "Bordro yemek yardım"
+      },
+      {
+        "CompanyID": 1,
+        "ProjectID": 3,
+        "CompanyName": "Carrefour-SA",
+        "ProjectName": "Eksik izin günü"
+      },
+      {
+        "CompanyID": 2,
+        "ProjectID": 1,
+        "CompanyName": "Bambi",
+        "ProjectName": "ALV Raporlama"
+      },
+      {
+        "CompanyID": 2,
+        "ProjectID": 2,
+        "CompanyName": "Bambi",
+        "ProjectName": "Smart Form Hazırlama"
+      },
+      {
+        "CompanyID": 3,
+        "ProjectID": 1,
+        "CompanyName": "MC Donald's",
+        "ProjectName": "Falan filan"
+      },
+      {
+        "CompanyID": 3,
+        "ProjectID": 2,
+        "CompanyName": "MC Donald's",
+        "ProjectName": "Deneme Yeter"
+      },
+      {
+        "CompanyID": 4,
+        "ProjectID": 1,
+        "CompanyName": "Burger King",
+        "ProjectName": "Deneme Yeter BK"
+      }
+    ]
+  }

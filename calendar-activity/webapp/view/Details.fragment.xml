@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<ResponsivePopover id="appTitle" title="{title}" class="sapUiPopupWithPadding" placement="Auto">
+		<beginButton>
+			<Button text="Edit" type="Emphasized" press="handleEditButton"/>
+		</beginButton>
+		<endButton>
+			<Button text="Delete" press="handlePopoverDeleteButton"/>
+		</endButton>
+		<content>
+			<f:SimpleForm id="appointmentEditForm" editable="false" layout="ResponsiveGridLayout" singleContainerFullSize="false">
+				<f:content>
+
+					<Label text="Additional information" labelFor="moreInfo"/>
+					<Text id="moreInfo" text="{text}"/>
+					<Label text="From" labelFor="startDate"/>
+					<Text text="{
+								path: 'startDate',
+								formatter:'.formatDate'
+							}"/>
+					<Label text="To" labelFor="endDate"/>
+					<Text text="{
+								path: 'endDate',
+								formatter:'.formatDate'
+							}"/>
+					<CheckBox visible="false" id="allDay" text="All-day" selected="{allDay>/allDay}" enabled="false"/>
+					<Label text="Type" labelFor="appType"/>
+					<Text id="appType" text="{ path: 'type', formatter: '._typeFormatter'}"/>
+					<VBox>
+						<HBox class="sapUiSmallMarginTop" alignContent="SpaceBetween" justifyContent="SpaceAround">
+							<Label text="Şehir Dışı" labelFor="isOutCity"/>
+							<Label text="Yemek Kartı" labelFor="yemekSwitch"/>
+							<Label text="Faturalansın" labelFor="faturaSwitch"/>
+						</HBox>
+						<HBox alignContent="SpaceBetween" justifyContent="SpaceAround">
+							<Switch enabled="false" id="isOutCity" customTextOff=" " customTextOn=" " state="{currSwitchInfo>/isOutCity}">
+							</Switch>
+							<Switch enabled="false" id="yemekSwitch" customTextOff=" " customTextOn=" " state="{currSwitchInfo>/isFoodPayed}">
+							</Switch>
+							<Switch enabled="false" id="faturaSwitch" customTextOff=" " customTextOn=" " state="{currSwitchInfo>/isBilled}">
+							</Switch>
+						</HBox>
+					</VBox>
+					<HBox justifyContent="End">
+						<Text class="bold" text="{currTaskInfo>/selectedCompany}"/>
+
+					</HBox>
+
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>
